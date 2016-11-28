@@ -12,6 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\components\paypal;
 
 /**
  * Site controller
@@ -73,6 +74,28 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionPaypal()
+    {
+        $p = new paypal();
+        $response = $p->teszt(10,[]);
+        //echo '<pre/>';
+        $url = $response->links[1]->href;
+        //echo 'Redirect user here:'.$url.'<br/><br/>';
+        //var_dump($response);
+        header('Location: '.$url);
+        die();
+        // return $this->render('index');
+    }
+
+    public function actionExecutePayment(){
+
+        if($_GET['success']=='true')$successPaypal = 'true';
+        else $successPaypal = 'false';
+
+            return $this->render('index',['successPaypal'=>$successPaypal]);
+
     }
 
     /**

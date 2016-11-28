@@ -6,6 +6,23 @@ $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
+    <?php if(!empty($successPaypal)):?>
+
+        <?php if($successPaypal=='true'):?>
+            <div class="alert alert-success">
+                Success! Payment successful<br />
+                Now you can download this <a href="/files/test.zip">file</a>
+            </div>
+        <?php else:?>
+            <div class="alert alert-danger">
+                Sorry! You could not pay
+            </div>
+        <?endif;?>
+
+    <?endif;?>
+
+
+
     <div class="jumbotron">
         <h1>Congratulations!</h1>
 

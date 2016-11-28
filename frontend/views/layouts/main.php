@@ -35,10 +35,12 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
+
+        ['label' => 'PayPal', 'url' => ['/site/paypal']],
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
-        ['label' => 'Paypal', 'url' => ['/paypal/index']],
+
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
